@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react'
+import React, { Suspense } from 'react'
 import SafeComponent from './safe-component'
 
 import App1 from 'app1/App1'
