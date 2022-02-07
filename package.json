@@ -1,0 +1,28 @@
+{
+  "name": "cra-craco-microfrontend",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "packages/container",
+    "packages/app1",
+    "packages/app2"
+  ],
+  "license": "ISC",
+  "scripts": {
+    "bootstrap": "lerna bootstrap --use-workspaces",
+    "build:watch": "NODE_ENV=development lerna run --parallel --stream build:watch",
+    "build": "NODE_ENV=production lerna run --parallel --stream build",
+    "change:version": "lerna version --conventional-commits --changelog-preset conventionalcommits --no-push",
+    "clean:matter": "cd ./packages/matter && rm -rf node_modules",
+    "clean:move": "cd ./packages/move && rm -rf node_modules",
+    "clean": "rm -rf node_modules && yarn clean:matter && yarn clean:move && yarn bootstrap",
+    "prepublish": "NODE_ENV=production yarn build",
+    "release": "lerna publish from-package --registry=https://registry.npmjs.org/",
+    "storybook:build": "build-storybook",
+    "test": "lerna run --parallel --stream test",
+    "watch": "node watcher.js"
+  },
+  "repository": {
+    "type": "git"
+  }
+}
