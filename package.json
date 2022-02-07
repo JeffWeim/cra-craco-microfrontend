@@ -17,7 +17,7 @@
     "clean:move": "cd ./packages/move && rm -rf node_modules",
     "clean": "rm -rf node_modules && yarn clean:matter && yarn clean:move && yarn bootstrap",
     "prepublish": "NODE_ENV=production yarn build",
-    "release": "lerna publish from-package --registry=https://registry.npmjs.org/",
+    "release": "lerna publish from-package --registry=https://registry.github.com/",
     "storybook:build": "build-storybook",
     "test": "lerna run --parallel --stream test",
     "watch": "node watcher.js"

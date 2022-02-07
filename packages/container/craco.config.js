@@ -1,6 +1,15 @@
 const ModuleFederation = require("webpack/lib/container/ModuleFederationPlugin");
 const deps = require("./package.json").dependencies;
 
+const outputDevConfig = {
+  publicPath: process.env.PUBLIC_PATH,
+};
+
+const outputProdConfig = {
+  filename: "[name].[contenthash].js",
+  publicPath: `cra-craco-microfrontend-container.vercel.app/`,
+};
+
 module.exports = function ({ env }) {
   return {
     devServer: {
@@ -16,9 +25,7 @@ module.exports = function ({ env }) {
     },
     webpack: {
       configure: {
-        output: {
-          publicPath: "http://localhost:8080/",
-        },
+        output: env === "development" ? outputDevConfig : outputProdConfig,
         plugins: [
           new ModuleFederation({
             name: "container",

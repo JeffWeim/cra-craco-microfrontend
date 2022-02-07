@@ -12,7 +12,7 @@ const outputDevConfig = {
 
 const outputProdConfig = {
   filename: "[name].[contenthash].js",
-  publicPath: `/${appName}/latest/`,
+  publicPath: `cra-craco-microfrontend-app2.vercel.app/`,
 };
 
 module.exports = function ({ env }) {
