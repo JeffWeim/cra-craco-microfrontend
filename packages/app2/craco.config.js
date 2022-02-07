@@ -1,10 +1,6 @@
-// const cracoModuleFederation = require('craco-module-federation')
 const ModuleFederation = require("webpack/lib/container/ModuleFederationPlugin");
 const deps = require("./package.json").dependencies;
 require("dotenv").config();
-
-const pkgJson = require("./package.json");
-const appName = pkgJson.name;
 
 const outputDevConfig = {
   publicPath: process.env.PUBLIC_PATH,
@@ -12,7 +8,7 @@ const outputDevConfig = {
 
 const outputProdConfig = {
   filename: "[name].[contenthash].js",
-  publicPath: `cra-craco-microfrontend-app2.vercel.app/`,
+  publicPath: `https://cra-craco-microfrontend-app2.vercel.app/`,
 };
 
 module.exports = function ({ env }) {
@@ -31,8 +27,8 @@ module.exports = function ({ env }) {
             name: "app2",
             filename: "remoteEntry.js",
             exposes: {
-              // './App2': './src/bootstrap', // this works
-              "./App2": "./src/app2", // this also works
+              "./App2": "./src/bootstrap", // this works
+              // "./App2": "./src/app2", // this also works
             },
             shared: {
               ...deps,

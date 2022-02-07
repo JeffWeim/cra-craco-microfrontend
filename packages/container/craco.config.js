@@ -7,7 +7,7 @@ const outputDevConfig = {
 
 const outputProdConfig = {
   filename: "[name].[contenthash].js",
-  publicPath: `cra-craco-microfrontend-container.vercel.app/`,
+  publicPath: `https://cra-craco-microfrontend-container.vercel.app/`,
 };
 
 module.exports = function ({ env }) {
@@ -30,8 +30,14 @@ module.exports = function ({ env }) {
           new ModuleFederation({
             name: "container",
             remotes: {
-              app1: "app1@http://localhost:8081/remoteEntry.js",
-              app2: "app2@http://localhost:8082/remoteEntry.js",
+              app1:
+                env === "development"
+                  ? "app1@http://localhost:8081/remoteEntry.js"
+                  : "app1@https://cra-craco-microfrontend-app1.vercel.app/remoteEntry.js",
+              app2:
+                env === "development"
+                  ? "app2@http://localhost:8082/remoteEntry.js"
+                  : "app2@https://cra-craco-microfrontend-app2.vercel.app/remoteEntry.js",
             },
             shared: {
               ...deps,

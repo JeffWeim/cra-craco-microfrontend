@@ -22,7 +22,7 @@ const outputDevConfig = {
 
 const outputProdConfig = {
   filename: "[name].[contenthash].js",
-  publicPath: `cra-craco-microfrontend-app1.vercel.app/`,
+  publicPath: `https://cra-craco-microfrontend-app1.vercel.app/`,
 };
 
 module.exports = function ({ env }) {
@@ -36,8 +36,8 @@ module.exports = function ({ env }) {
             name: appName,
             filename: "remoteEntry.js",
             exposes: {
-              // './App1': './src/bootstrap', // this works
-              "./App1": "./src/app1", // this also works
+              "./App1": "./src/bootstrap", // this works
+              // "./App1": "./src/app1", // this also works
             },
             shared: {
               ...deps,
