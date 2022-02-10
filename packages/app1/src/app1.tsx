@@ -14,7 +14,7 @@ const App1 = () => {
       }}
     >
       <h1 style={{ border: '1px dashed black', display: 'inline-block', padding: '20px' }}>App 1</h1>
-      <img src="https://placedog.net/640/480?random" />
+      <img alt="doggo" src="https://placedog.net/640/480?random" />
     </div>
   )
 }
