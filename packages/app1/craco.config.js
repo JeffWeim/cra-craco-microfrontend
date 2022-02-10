@@ -16,7 +16,6 @@ const devServerConfig = {
 };
 
 const outputDevConfig = {
-  // publicPath: `http://localhost:${port}/`,
   publicPath: process.env.PUBLIC_PATH,
 };
 

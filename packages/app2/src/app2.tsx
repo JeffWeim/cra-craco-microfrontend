@@ -10,9 +10,13 @@ const App2 = () => {
         boxShadow: '1px 1px 1px 1px rgba(255,0,0,0.1)',
         textAlign: 'right',
         color: 'salmon',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'end',
       }}
     >
-      <h1>Hello from App 2 :)</h1>
+      <h1 style={{ border: '1px dashed salmon', display: 'inline-block', padding: '20px' }}>App 2</h1>
+      <img src="https://placedog.net/640/480?random" />
     </div>
   )
 }

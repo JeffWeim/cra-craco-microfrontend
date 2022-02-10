@@ -8,9 +8,13 @@ const App1 = () => {
         margin: '5px',
         padding: '10px',
         boxShadow: '1px 1px 1px 1px rgba(0,0,0,0.1)',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'start',
       }}
     >
-      <h1>Hello from App 1 :) wowie</h1>
+      <h1 style={{ border: '1px dashed black', display: 'inline-block', padding: '20px' }}>App 1</h1>
+      <img src="https://placedog.net/640/480?random" />
     </div>
   )
 }

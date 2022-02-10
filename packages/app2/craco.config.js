@@ -1,6 +1,19 @@
+const { whenDev } = require("@craco/craco");
 const ModuleFederation = require("webpack/lib/container/ModuleFederationPlugin");
-const deps = require("./package.json").dependencies;
 require("dotenv").config();
+
+const pkgJson = require("./package.json");
+const appName = pkgJson.name;
+
+const port = 8082;
+const deps = pkgJson.dependencies;
+
+const devServerConfig = {
+  port,
+  historyApiFallback: {
+    index: "/index.html",
+  },
+};
 
 const outputDevConfig = {
   publicPath: process.env.PUBLIC_PATH,
@@ -13,18 +26,13 @@ const outputProdConfig = {
 
 module.exports = function ({ env }) {
   return {
-    devServer: {
-      port: 8082,
-      historyApiFallback: {
-        index: "/index.html",
-      },
-    },
+    devServer: whenDev(() => devServerConfig, []),
     webpack: {
       configure: {
         output: env === "development" ? outputDevConfig : outputProdConfig,
         plugins: [
           new ModuleFederation({
-            name: "app2",
+            name: appName,
             filename: "remoteEntry.js",
             exposes: {
               "./App2": "./src/bootstrap", // this works
